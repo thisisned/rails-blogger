@@ -38,6 +38,16 @@ class ArticlesController < ApplicationController
 		redirect_to article_path(@article)
 	end
 
+	def remove_image
+		@article = Article.find(params[:id])
+		@article.image = nil
+		@article.save
+
+		flash.notice = "Image Deleted!"
+
+		redirect_to article_path(@article)
+	end
+
 	def destroy
 		@article = Article.find(params[:id])
 		@article.destroy
